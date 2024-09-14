@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +33,9 @@ ALLOWED_HOSTS = ['*']
 APPS = [
     'interaction', 
     'pixel',
-    'userProfile'
+    'userProfile',
+    'rest_framework',
+    'django_filters'
 ]
 
 INSTALLED_APPS = [
@@ -73,6 +76,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'valorantpixel.wsgi.application'
+
+# REST-FRAMEWORK CONFIGS
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS" : ("django_filters.rest_framework.DjangoFilterBackend",),
+    "DEFAULT_SCHEMA_CLASS" : "rest_framework.schemas.coreapi.AutoSchema" ,
+    "DEFAULT_PAGINATION_CLASS" : "rest_framework.pagination.PageNumberPagination",
+    "NON_FIELD_ERRORS_KEY" : "error",
+    "PAGE_SIZE" : 5
+    }
+
 
 
 # Database
@@ -120,6 +134,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 # Internationalization

@@ -5,3 +5,4 @@ from django.db import models
 
 class Pixel(models.Model):
     descricao = models.TextField()
+    upload = models.FileField(upload_to='pixels-files/', blank=True, null=True)
