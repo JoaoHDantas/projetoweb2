@@ -5,7 +5,7 @@ from pixel.models import Pixel
 
 
 class UserProfile(models.Model):
-    fraseEfeito = models.TextField()
+    fraseEfeito = models.TextField(blank=True, null=True)
     profile_picture = models.ImageField(upload_to='profile-images/', blank=True, null=True)
     userPixels = models.ForeignKey(Pixel, on_delete = models.CASCADE, blank=True, null=True)
     # fotoPerfil = models.ImageField()

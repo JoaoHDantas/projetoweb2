@@ -4,5 +4,6 @@ from django.db import models
 
 
 class Pixel(models.Model):
-    descricao = models.TextField()
+    titulo = models.CharField(max_length=100, blank=True, null=True)
+    descricao = models.TextField(blank=True, null=True)
     upload = models.FileField(upload_to='pixels-files/', blank=True, null=True)
