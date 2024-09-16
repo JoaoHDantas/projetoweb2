@@ -19,8 +19,14 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from userProfile.api.router import userProfile_router
+from pixel.api.router import pixel_router
+from interaction.api.router import interaction_router
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(userProfile_router.urls)),
+    path('api/', include(userProfile_router.urls)), 
+    path('api/', include(pixel_router.urls)),
+    path('api/', include(interaction_router.urls))
+
 ]  + static(settings.MEDIA_URL , document_root =settings.MEDIA_ROOT)
