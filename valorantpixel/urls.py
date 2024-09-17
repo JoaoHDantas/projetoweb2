@@ -21,12 +21,15 @@ from django.conf import settings
 from userProfile.api.router import userProfile_router
 from pixel.api.router import pixel_router
 from interaction.api.router import interaction_router
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(userProfile_router.urls)), 
     path('api/', include(pixel_router.urls)),
-    path('api/', include(interaction_router.urls))
+    path('api/', include(interaction_router.urls)),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
 
 ]  + static(settings.MEDIA_URL , document_root =settings.MEDIA_ROOT)
