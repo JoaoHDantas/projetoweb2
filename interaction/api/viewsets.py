@@ -6,4 +6,4 @@ from .permissions import IsInSpecificGroup
 class InteractionViewSet(viewsets.ModelViewSet):
     queryset = Interaction.objects.all()
     serializer_class = InteractionSerializer
-    permission_classes = [permissions.IsAuthenticated, IsInSpecificGroup]
+    permission_classes = [permissions.IsAuthenticated, IsInSpecificGroup, permissions.DjangoModelPermissions]
