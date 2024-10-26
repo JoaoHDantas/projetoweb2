@@ -1,4 +1,5 @@
 from django.db import models
+from pixel.models import Pixel
 from django.utils import timezone
 # Create your models here.
 
@@ -35,3 +36,4 @@ class Interaction(BaseModel):
     avaliacao = models.IntegerField(choices=AVALIACAO_CHOICES, blank=True, null=True)
     comentario = models.TextField(blank=True, null=True)
     upload = models.FileField(upload_to='interaction-files/', blank=True, null=True)
+    pixelPost = models.ForeignKey(Pixel, on_delete = models.CASCADE, blank=True, null=True)
