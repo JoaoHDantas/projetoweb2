@@ -7,4 +7,5 @@ from .permissions import IsInSpecificGroup
 class PixelViewSet(viewsets.ModelViewSet):
     queryset = Pixel.objects.all()
     serializer_class = PixelSerializer
+    # permission_classes = [permissions.AllowAny]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, permissions.IsAuthenticated, IsInSpecificGroup, permissions.DjangoModelPermissions]
